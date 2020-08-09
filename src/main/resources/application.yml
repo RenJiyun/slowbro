@@ -1,2 +1,15 @@
 server:
   port: 8081
+
+spring:
+  datasource:
+    url: jdbc:h2:mem:test_db
+    driverClassName: org.h2.Driver
+    username: root
+    password: 123456
+    schema: classpath:db/schema.sql
+    data: classpath:db/data.sql
+
+  h2:
+    console:
+      enabled: true
