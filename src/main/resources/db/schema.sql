@@ -1,5 +1,6 @@
 CREATE TABLE student(
  id int not null,
  name varchar(20) null,
- age int null
+ age int null,
+ primary key(id)
 );
