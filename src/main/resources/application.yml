@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 80
 
 spring:
   datasource:
@@ -13,3 +13,11 @@ spring:
   h2:
     console:
       enabled: true
+
+slowbro:
+  weixin:
+    gongzhonghao:
+      token: yiwanzhudan
+      AppID: wx864b7d20397dc4fb
+      AppSecret: 36bef91473d6ff82a457c108e6ae1b7b
+
