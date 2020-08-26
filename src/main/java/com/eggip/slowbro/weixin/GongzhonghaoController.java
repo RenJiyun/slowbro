@@ -1,6 +1,7 @@
 package com.eggip.slowbro.weixin;
 
 import com.google.common.hash.Hashing;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +19,9 @@ public class GongzhonghaoController {
 
     @Value("${slowbro.weixin.gongzhonghao.token}")
     private String token;
+
+    @Autowired
+    private GongzhonghaoService gongzhonghaoService;
 
     /**
      * 微信公众号接入
@@ -40,12 +44,10 @@ public class GongzhonghaoController {
                 throw new IllegalArgumentException();
             }
         } else if (request.getMethod().equals("POST") && !StringUtils.isEmpty(xmlStr)) {
-            System.out.println(xmlStr);
-            return "SUCCESS";
+            return gongzhonghaoService.dispatch(xmlStr);
         } else {
             throw new RuntimeException();
         }
-
     }
 
     private boolean checkSignature(String token, String timestamp, String nonce, String signature) {
